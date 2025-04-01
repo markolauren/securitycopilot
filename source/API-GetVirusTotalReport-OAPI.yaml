@@ -2,7 +2,7 @@ openapi: 3.0.0
 
 info:
     title: Get Virus Total Information
-    description: Get Information about an IP or Domain from Virus Total
+    description: Get Information about an IP, Domain, or URL from Virus Total
     version: "v1"
 
 servers:
@@ -11,7 +11,7 @@ servers:
 paths:
     /v3/ip_addresses/{ip}:
         get:
-            operationId: Get VirusTotal IP
+            operationId: GetVirusTotalIP
             summary: Get Virus Total IP Information for a particular IP address.
             parameters:
                 - in: path
@@ -29,7 +29,7 @@ paths:
                                 $ref: "#/components/schemas/getVTIPResponse"
     /v3/domains/{domain}:
         get:
-            operationId: Get VirusTotal Domain
+            operationId: GetVirusTotalDomain
             summary: Get Virus Total Domain Information for a particular domain.
             parameters:
                 - in: path
@@ -45,6 +45,24 @@ paths:
                         application/json:
                             schema:
                                 $ref: "#/components/schemas/getVTDomainResponse"
+    /v3/urls/{url}:
+        get:
+            operationId: GetVirusTotalURL
+            summary: Get Virus Total URL Information for a particular URL.
+            parameters:
+                - in: path
+                  name: url
+                  schema:
+                      type: string
+                  required: true
+                  description: The URL to lookup              
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/getVTURLResponse"
 
 components:
     schemas:
@@ -70,6 +88,39 @@ components:
                                     source:
                                         type: string
         getVTDomainResponse:
+            type: object
+            properties:
+                attributes:
+                    type: object
+                    properties:
+                        last_analysis_date:
+                            type: integer
+                        categories:
+                            type: array
+                            items:
+                                type: string
+                        reputation:
+                            type: integer
+                        tags:
+                            type: array
+                            items:
+                                type: string
+                        last_https_certificate_date:
+                            type: integer
+                        last_analysis_stats:
+                            type: object
+                            properties:
+                                harmless:
+                                    type: integer
+                                malicious:
+                                    type: integer
+                                suspicious:
+                                    type: integer
+                                undetected:
+                                    type: integer
+                                timeout:
+                                    type: integer
+        getVTURLResponse:
             type: object
             properties:
                 attributes:
