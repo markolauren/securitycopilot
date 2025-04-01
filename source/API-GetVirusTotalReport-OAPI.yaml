@@ -2,7 +2,7 @@ openapi: 3.0.0
 
 info:
     title: Get Virus Total Information
-    description: Get Information about an IP, Domain, or URL from Virus Total
+    description: Get Information about an IP, Domain, or File from Virus Total
     version: "v1"
 
 servers:
@@ -45,24 +45,24 @@ paths:
                         application/json:
                             schema:
                                 $ref: "#/components/schemas/getVTDomainResponse"
-    /v3/urls/{url}:
+    /v3/files/{file_id}:
         get:
-            operationId: GetVirusTotalURL
-            summary: Get Virus Total URL Information for a particular URL.
+            operationId: GetVirusTotalFile
+            summary: Get Virus Total File Information for a particular file.
             parameters:
                 - in: path
-                  name: url
+                  name: file_id
                   schema:
                       type: string
                   required: true
-                  description: The URL to lookup              
+                  description: The file ID to lookup              
             responses:
                 "200":
                     description: OK
                     content:
                         application/json:
                             schema:
-                                $ref: "#/components/schemas/getVTURLResponse"
+                                $ref: "#/components/schemas/getVTFileResponse"
 
 components:
     schemas:
@@ -120,26 +120,28 @@ components:
                                     type: integer
                                 timeout:
                                     type: integer
-        getVTURLResponse:
+        getVTFileResponse:
             type: object
             properties:
                 attributes:
                     type: object
                     properties:
+                        md5:
+                            type: string
+                        sha1:
+                            type: string
+                        sha256:
+                            type: string
+                        ssdeep:
+                            type: string
                         last_analysis_date:
                             type: integer
-                        categories:
-                            type: array
-                            items:
-                                type: string
                         reputation:
                             type: integer
                         tags:
                             type: array
                             items:
                                 type: string
-                        last_https_certificate_date:
-                            type: integer
                         last_analysis_stats:
                             type: object
                             properties:
