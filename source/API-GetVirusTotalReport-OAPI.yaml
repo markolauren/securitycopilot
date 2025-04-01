@@ -11,7 +11,7 @@ servers:
 paths:
     /v3/ip_addresses/{ip}:
         get:
-            operationId: getVirusTotalIP
+            operationId: Get VirusTotal IP
             summary: Get Virus Total IP Information for a particular IP address.
             parameters:
                 - in: path
@@ -29,7 +29,7 @@ paths:
                                 $ref: "#/components/schemas/getVTIPResponse"
     /v3/domains/{domain}:
         get:
-            operationId: getVirusTotalDomain
+            operationId: Get VirusTotal Domain
             summary: Get Virus Total Domain Information for a particular domain.
             parameters:
                 - in: path
