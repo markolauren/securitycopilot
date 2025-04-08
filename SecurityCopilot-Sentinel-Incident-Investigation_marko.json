@@ -941,6 +941,12 @@
                                                     "@parameters('CallScpForCommandLines')",
                                                     true
                                                 ]
+                                            },
+                                            {
+                                                "equals":  [
+                                                    "@empty(variables('ProcessedCommandLines'))",
+                                                    false
+                                                ]
                                             }
                                         ]
                                     },
