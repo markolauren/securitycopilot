@@ -9,7 +9,8 @@ _(original by SCStelz here: https://github.com/SCStelz/CopilotForSecurity/tree/m
 <br><br>
 
 ### SecurityCopilot-Sentinel-Incident-Investigation
-My fork of Sentinel Logic App to automate incident entity investigation, summarization & impact analysis using Security Copilot.
+My fork of Sentinel Logic App to automate incident entity investigation, summarization & impact analysis using Security Copilot.<br>
+The summarization part assumes you've onboarded Sentinel workspace to Unified SecOps platform.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmarkolauren%2Fsecuritycopilot%2Frefs%2Fheads%2Fmain%2FSecurityCopilot-Sentinel-Incident-Investigation_marko.json" target="_blank">
 <img src="https://aka.ms/deploytoazurebutton"/>
